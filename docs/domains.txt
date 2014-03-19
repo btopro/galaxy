@@ -1,0 +1,49 @@
+#Galaxy domains.conf recommendations
+NameVirtualHost example.com:80
+
+<VirtualHost example.com:80>
+    DocumentRoot /var/www/html
+    ServerName example.com
+    ServerAlias www.example.com
+</VirtualHost>
+<VirtualHost courses.example.com:80>
+    DocumentRoot /var/www/galaxy/domains/courses
+    ServerName courses.example.com
+</VirtualHost>
+<VirtualHost media.example.com:80>
+    DocumentRoot /var/www/galaxy/domains/media
+    ServerName media.example.com
+</VirtualHost>
+<VirtualHost analytics.example.com:80>
+    DocumentRoot /var/www/galaxy/domains/analytics
+    ServerName analytics.example.com
+</VirtualHost>
+<VirtualHost online.example.com:80>
+    DocumentRoot /var/www/galaxy/domains/online
+    ServerName online.example.com
+</VirtualHost>
+
+<Directory /var/www/galaxy/domains/courses>
+    AllowOverride All
+    Order allow,deny
+    allow from all
+    Include /var/www/galaxy/domains/courses/.htaccess
+</Directory>
+<Directory /var/www/galaxy/domains/media>
+    AllowOverride All
+    Order allow,deny
+    allow from all
+    Include /var/www/galaxy/domains/media/.htaccess
+</Directory>
+<Directory /var/www/galaxy/domains/online>
+    AllowOverride All
+    Order allow,deny
+    allow from all
+    Include /var/www/galaxy/domains/online/.htaccess
+</Directory>
+<Directory /var/www/galaxy/domains/analytics>
+    AllowOverride None
+    Order allow,deny
+    allow from all
+</Directory>
+
